@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="Data/colors.js"></script>
+    <script src="palettegenerator.js"></script>
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Color Palette</title>
+</head>
+
+<body style="background-color: azure;">
+    <div style="display: flex; padding: 1vw;">
+        <div style="background-color: seashell;border-style: solid; width: fit-content; padding: 1vw; margin: 0.1vw;">
+            <h1>Upload Image</h1>
+            <form
+                style="background-color: beige;border: 1px;border-style: dashed; width: fit-content; padding: 0.5vw; margin: 0.1vw;">
+                <label>Crop Border</label><br>
+                <input type="checkbox" id="checkCropBorder"><br>
+                <label id="labelColors">Number of Colors</label><br>
+                <input type="range" min="1" max="8" value="4" class="slider" id="inputColors"
+                    onchange="colorsChanged()"><br>
+                <label for="checkLeastDeviation">Use Least Deviation</label><br>
+                <input type="checkbox" id="checkLeastDeviation"><br>
+                <label id="labelBlack">Black Threshold</label><br>
+                <input type="range" min="1" max="255" value="20" class="slider" id="inputBlackThreshold"
+                    onchange="blackChanged()"><br>
+                <label id="labelMinMax">Min Max Scale</label><br>
+                <input type="range" min="0" max="100" value="90" class="slider" id="inputMinMax"
+                    onchange="minMaxChanged()"><br>
+
+            </form>
+            <br>
+            <button type="button" onclick="changeImage()">Change Image</button>
+            <br>
+            <img id="imgSource" src="Images/rIcon1.jpg">
+            <canvas id="canvasPreview" height="0px" width="0px"></canvas>
+            <br>
+            <!-- <canvas id="imgPreview" width="100" height="100"></canvas>
+        <br> 
+        <input type="file" accept="image/png, image/jpeg, image/jpg" id="inputImage" onchange="setPreviewImage()">
+        <br> -->
+            <button type="button" onclick="submit()">Generate</button>
+            <br>
+            <canvas id="canvasPalette" height="0px" width="fit-content"></canvas>
+
+        </div>
+        <br>
+        <div
+            style="background-color: seashell;border-style: solid; width: fit-content; padding: 1vw; margin: 0.1vw; margin-left: 50px;">
+            <h1>Search by Color</h1>
+            <label>Search by Name</label>
+            <input type="checkbox" id="checkSearchName"><br><br>
+            <form
+                style="background-color: beige;border: 1px;border-style: dashed; width: fit-content; padding: 0.5vw; margin: 0.1vw;">
+                <label id="labelMaxColor">Max Color Difference</label><br>
+                <input type="range" min="0" max="765" value="100" class="slider" id="inputMaxColor"
+                    onchange="maxColorChanged()"><br>
+                <label id="labelColorWeight">Min Color Weight</label><br>
+                <input type="range" min="0" max="100" value="25" class="slider" id="inputColorWeight"
+                    onchange="colorWeightChanged()"><br>
+            </form>
+            <label for="inputColor">Choose your color</label>
+            <input type="color" id="inputColor">
+            <br>
+            <label for="inputColorName">Choose color by name</label>
+            <select id="selectColorName" style="width: 100px;">
+            </select><br>
+            <button type="button" onclick="search()">Search</button>
+            <div id="canvasSearchResults">
+
+            </div>
+
+        </div>
+
+    </div>
+    <footer style="position: absolute; bottom: 5px;">
+        <h5>
+            When an user uploads an icon to the site, automatically generate the palette and ask the user if he wants to
+            change the palette or is he okay with it
+        </h5>
+        <h5>
+            When an user wants to search an icon, allow him to either use the color picker or a input that he can choose
+            the name (red)
+        </h5>
+    </footer>
+</body>
+<script src="Data/imagePalettes.js"></script>
+<script src="imagefinder.js"></script>
+
+</html>
