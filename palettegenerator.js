@@ -1,24 +1,3 @@
-//Local file can't be loaded
-function setPreviewImage() {
-    const input = document.getElementById("inputImage");
-    const canvas = document.getElementById("imgPreview");
-    const context = canvas.getContext('2d');
-
-    const image = new Image();
-    image.src = input.value;
-    image.onload = function () {
-        context.drawImage(image, 0, 0);
-    }
-}
-
-var index = 1;
-
-function changeImage() {
-    index = ((index + 1) % 5); index = (index == 0)? 5 : index; 
-    const input = document.getElementById("imgSource");
-    input.src = "Images/rIcon" + index + ".jpg";
-}
-
 function submit() {
     const checkCropBorder = document.getElementById('checkCropBorder');                         
 

@@ -1,3 +1,12 @@
+var index = 1;
+
+function changeImage() {
+    index = ((index + 1) % 5); index = (index == 0)? 5 : index; 
+    const input = document.getElementById("imgSource");
+    input.src = "Images/rIcon" + index + ".jpg";
+}
+
+
 function colorsChanged(){
     const label = document.getElementById('labelColors');
     const input = document.getElementById('inputColors');
